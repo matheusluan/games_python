@@ -6,13 +6,12 @@ from rest_framework.permissions import AllowAny
 
 from .models import Game, Player
 from .serializers import GameSerializer, PlayerRegistrationSerializer, PlayerLoginSerializer, PlayerSerializer
-from .permissions import IsGetOrAuthenticated
 from .utils import get_tokens_for_player 
 
 class GameViewSet(viewsets.ModelViewSet):
     queryset = Game.objects.all()  
     serializer_class = GameSerializer 
-    permission_classes = [IsGetOrAuthenticated]
+    permission_classes = [AllowAny]
     
 class PlayerRegistrationView(generics.CreateAPIView):
     queryset = Player.objects.all()
